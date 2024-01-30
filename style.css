@@ -600,3 +600,29 @@ background-attachment: fixed;
         display: block;
         max-width: 100%;
       }
+
+      .newssection{
+        width: 100%;
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .newstitle{
+        display: flex;
+        gap:3px;
+        color: #030211;
+font-family: Syne;
+font-size: 40px;
+font-style: normal;
+font-weight: 700;
+align-items: center;
+line-height: normal;
+      }
+
+      .newsblue{
+        background-color: #030211;
+        color: white;
+        padding: 3px;
+      }
