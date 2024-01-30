@@ -35,3 +35,14 @@ var $grid = $('.grid').masonry({
   $grid.imagesLoaded().progress( function() {
     $grid.masonry();
   });
+
+
+  document.addEventListener("DOMContentLoaded", function() {
+    // Select all img elements on the page
+    var images = document.querySelectorAll('img');
+
+    // Iterate through each image and set the loading attribute to 'lazy'
+    images.forEach(function(image) {
+        image.loading = 'lazy';
+    });
+});
