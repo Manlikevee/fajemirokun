@@ -1068,7 +1068,7 @@ text-align: left;
 }
 
 .date{
-font-size: 13px;
+font-size: 19px;
 font-weight: 400;
 line-height: 27px;
 letter-spacing: 0em;
@@ -1090,8 +1090,8 @@ text-align: left;
 }
 
 .contentone{
-    width: 46vh;
-font-size: 20px;
+    width: 56vh;
+font-size: 30px;
 font-weight: 500;
 
 }
@@ -1099,13 +1099,14 @@ font-weight: 500;
 .contenttwo{
     opacity: 0.5;
     padding-top: 12px;
-    width: 53vh;
+    width: 63vh;
+    font-size: 20px;
 }
 
 .rm{
     display: flex;
    padding-top: 40px;
-   gap: 5px;
+   
 }
 
 .button{
