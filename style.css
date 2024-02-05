@@ -898,14 +898,36 @@ height: 400px;
 
 }
 .Title{
-    width: Fixed (1,200.46px);
+    width: auto;
 height: Hug (60px);
 gap: 177px;
-
+display: flex;
+flex-direction: row;
+justify-content: center;
+}
+.one{
+    font-family: Syne;
+font-size: 40px;
+font-weight: 700;
+line-height: 48px;
+letter-spacing: 0em;
+text-align: left;
+gap: 10px;
+}
+.two{
+    width: Fixed (560px);
+height: Hug (60px);
+gap: 20px;
+font-family: Syne;
+font-size: 40px;
+font-weight: 700;
+line-height: 48px;
+letter-spacing: 0em;
+text-align: left;
 }
 .btn{
-    width: 28px;
-    height: 19px;
+    
+    gap: 20px;
     font-family: Nunito;
 font-size: 14px;
 font-weight: 700;
@@ -914,63 +936,56 @@ letter-spacing: 0em;
 text-align: center;
 background: rgba(3, 2, 17, 1);
 color: white;
+width: 98px ;
+height:47px ;
 }
 .button{
     color: rgba(3, 2, 17, 1);
-
+    width: 100px;
+    height: 47px;
+gap: 20px;
 }
 .buttons{
-    display: inline;
+    display: flex;
+    gap: 20px;
 }
 .one{
-width: ;
+align-items:center ;
 }
 .two{
-
+justify-content: center;
 }
 .boxa{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 80px;
-    margin-top: 80px;
-    width: Fixed (450px);
-height: Hug (600px);
-gap: 40px;
-align-items: center;
-justify-content: center;
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+ gap: 30px;
 
 }
-.boxb{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 40px;
-    margin-top: 80px;
-}
-.boxc{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-justify-content: space-between;
-gap: 40px;
-margin-top: 80px;
-}
-.boxone{
-    width: 540px;
-    height: 600px;
-}
-
-
 .aboutone{
     display: flex;
     padding-bottom: 30px;
     gap: 70px;
     width: 100%;
 }
+.boxdate{
+    font-family: Nunito;
+font-size: 10px;
+font-weight: 400;
+line-height: 27px;
+letter-spacing: 0em;
+text-align: left;
 
+}
+.boxcontent{
+    font-family: Syne;
+font-size: 19px;
+font-weight: 200;
+line-height: 26px;
+letter-spacing: 0em;
+text-align: left;
+
+}
 .dj{
     display: flex;
     flex-direction: column;
