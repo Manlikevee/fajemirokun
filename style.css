@@ -886,10 +886,8 @@ gap: 150px;
 .blogone{
     display: flex;
     flex-direction: row;
-    width: Fixed (1,200px);
-    height: Hug (400px);
-    top: 270px;
-    gap: 203px;
+    padding-top: 30px;
+   
     
 }
 .imgbox{
@@ -1043,4 +1041,77 @@ margin-top: 80px;
     width: 100%;
     display: flex;
     gap: 30px;
+}
+
+.ct{
+    display: flex;
+}
+
+.flex{
+    display: flex;
+    flex-direction: column;
+}
+
+.date{
+font-size: 13px;
+font-weight: 400;
+line-height: 27px;
+letter-spacing: 0em;
+text-align: left;
+
+}
+
+.line{
+    background-color: black;
+    height: 2px;
+       width: 10%;
+       border: 1px solid grey;
+       margin-top: 14px;
+}
+
+.flexone{
+    display: flex;
+    gap: 10px;
+}
+
+.contentone{
+    width: 46vh;
+font-size: 20px;
+font-weight: 500;
+
+}
+
+.contenttwo{
+    opacity: 0.5;
+    padding-top: 12px;
+    width: 53vh;
+}
+
+.rm{
+    display: flex;
+   padding-top: 40px;
+   gap: 5px;
+}
+
+.button{
+    font-size: 10px;
+}
+
+.vector img{
+    height: 10px;
+    margin-bottom: 4px;
+}
+
+.ph img{
+    width: 40vh;
+    height: 30vh;
+    margin-left: 299px;
+}
+
+.ph{
+    margin-left: -104px;
+}
+
+.photo{
+    padding-top: 45px;
 }
