@@ -658,6 +658,9 @@ background: #030211;
     flex-direction: column;
     gap:20px;
     margin-top: 20px;
+    font-family: 'Lato', sans-serif;
+font-family: 'Montserrat', sans-serif;
+font-family: 'Syne', sans-serif;
 }
       .blogdate{
         width: 100%;
@@ -852,4 +855,110 @@ font-style: normal;
 margin-top: 5px;
 font-weight: 600;
 line-height: 20px; /* 142.857% */
+}
+.familysection{
+    width: Fixed (1,200.72px);
+height: Hug (2,899px);
+top: 247.31px;
+left: 359.74px;
+gap: 150px;
+
+}
+.Ourblog{
+    font-family: Syne;
+    font-size: 100px;
+    font-weight: 700;
+    line-height: 120px;
+    letter-spacing: 0em;
+    text-align: center;
+    
+}
+.blogsingle{
+
+}
+.date{
+    font-size: 10px;
+}
+.ct1{
+    display: flex;
+    flex-direction: row;
+}
+.blogone{
+    display: flex;
+    flex-direction: row;
+    width: Fixed (1,200px);
+    height: Hug (400px);
+    top: 270px;
+    gap: 203px;
+    
+}
+.imgbox{
+    width: 488px;
+height: 400px;
+
+}
+.Title{
+    width: Fixed (1,200.46px);
+height: Hug (60px);
+gap: 177px;
+
+}
+.btn{
+    width: 28px;
+    height: 19px;
+    font-family: Nunito;
+font-size: 14px;
+font-weight: 700;
+line-height: 19px;
+letter-spacing: 0em;
+text-align: center;
+background: rgba(3, 2, 17, 1);
+color: white;
+}
+.button{
+    color: rgba(3, 2, 17, 1);
+
+}
+.buttons{
+    display: inline;
+}
+.one{
+width: ;
+}
+.two{
+
+}
+.boxa{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 80px;
+    margin-top: 80px;
+    width: Fixed (450px);
+height: Hug (600px);
+gap: 40px;
+align-items: center;
+justify-content: center;
+
+}
+.boxb{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+    margin-top: 80px;
+}
+.boxc{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+justify-content: space-between;
+gap: 40px;
+margin-top: 80px;
+}
+.boxone{
+    width: 540px;
+    height: 600px;
 }
