@@ -948,7 +948,7 @@ gap: 20px;
     gap: 20px;
 }
 .one{
-width: ;
+
 }
 .two{
 
@@ -957,8 +957,17 @@ width: ;
    display: flex;
    flex-direction: row;
    flex-wrap: wrap;
- gap: 30px;
+ gap: 15px;
+ align-items: center;
 
+}
+.img{
+    width: 100%;
+}
+.boxone{
+    width: 44%;
+    padding: 6%;
+    
 }
 .aboutone{
     display: flex;
