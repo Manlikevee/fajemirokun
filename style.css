@@ -1131,3 +1131,9 @@ font-weight: 500;
 .photo{
     padding-top: 45px;
 }
+
+.blogs{
+    display: flex;
+    flex-wrap: wrap;
+    
+}
