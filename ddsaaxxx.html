@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+
+        function loadCSVFile() {
+
+fetch('/gainersdata.php')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+     
+        return response.json(); // Parse the response as JSON
+    })
+    .then(data => {
+        console.log(data)
+        const fileUrl = data.file; // Use the 'file' value from the JSON response
+
+        // Now, use the 'fileUrl' to fetch and process the CSV file
+        fetch(fileUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(csvData => {
+                const rows = csvData.split('\n');
+
+                // Clear existing table rows
+                csvTable.innerHTML = '';
+
+                for (let i = 0; i < rows.length; i++) {
+                    const columns = parseCSVRow(rows[i]);
+                    const row = document.createElement('tr');
+
+                    for (let j = 0; j < columns.length; j++) {
+                        const cell = document.createElement(i === 0 ? 'td' : 'td'); // Use 'th' for header row
+                        cell.textContent = columns[j];
+                        row.appendChild(cell);
+                    }
+
+                    csvTable.appendChild(row);
+                }
+            })
+            .catch(error => {
+                console.error('There was a problem fetching or parsing the CSV file:', error);
+            });
+    })
+    .catch(error => {
+        console.error('There was a problem fetching the JSON data:', error);
+    });
+}
+    </script>
+</body>
+</html>
