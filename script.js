@@ -46,3 +46,8 @@ var $grid = $('.grid').masonry({
         image.loading = 'lazy';
     });
 });
+
+function ovl(){
+    var loadingover = document.querySelector(".loading-over2");
+    loadingover.classList.toggle("loading-overshow");
+}

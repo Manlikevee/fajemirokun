@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fajemirokun Balagbe Family</title>
+    <meta
+      name="description"
+      content="Welcome to the official online home of the Fajemirokun Balagbe Family! We are thrilled to have you here as we embark on a digital journey to showcase the rich tapestry of our family's history, values, and achievements."
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="logo">
+            <a href="index.html">
+                <img src="images/Fajemirokun Balagbe 1.png" alt="" />
+            </a>
+         
+        </div>
+
+        <div class="navtoggle" onclick="navtoggle()">=</div>
+      </div>
+    </header>
+    <div class="loading-over2" onclick="navtoggle()"></div>
+    <script>
+      function navtoggle() {
+        var links = document.querySelector(".links");
+        var loadingover = document.querySelector(".loading-over2");
+        links.classList.toggle("showabs");
+        loadingover.classList.toggle("loading-overshow");
+      }
+    </script>
+    <br />
+    <br />
+  <br>
+  <br>
+
+  <style>
+    .msgicn {
+    width: 150px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 150px;
+    margin-bottom: -40px;
+}
+.msgicn img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.herotitle {
+    margin-top: 50px;
+    color: #0F172A;
+
+    font-size: 53px;
+    width: 74%;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    letter-spacing: -0.8px;
+}
+.herosubtitle {
+    margin-top: 10px;
+    color: #334155;
+    width: 63%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 27px;
+    letter-spacing: -0.45px;
+}
+.aboutsection .container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 60px;
+}
+  </style>
+  <div class="aboutsection">
+    <div class="container">
+
+        <div class="msgicn">
+            <img src="https://img.freepik.com/free-vector/open-email-envelope_1020-530.jpg?w=740&amp;t=st=1707148547~exp=1707149147~hmac=515f4df139519fa276f4ffb2eec62434a4cafb7aba3b78cf0334ab0185ce5a3a" alt="">
+          </div>
+          <div class="herotitle">
+            Thank you
+          </div>
+          <div class="herosubtitle">
+            Your form submission has been successfully received.
+          </div>
+    </div>
+  </div>
+    <br />
+    <script>
+        // Function to redirect after 20 seconds
+        function redirect() {
+            setTimeout(function() {
+                // Change the URL to the desired destination
+                window.location.href = "form.html";
+            }, 10000); // 20 seconds in milliseconds
+        }
+
+        // Call the redirect function when the page loads
+        window.onload = redirect;
+    </script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
+    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

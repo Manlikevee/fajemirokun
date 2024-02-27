@@ -14,7 +14,10 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
-
+    <script src="https://unpkg.com/d3@6"></script>
+    <script src="https://unpkg.com/family-chart"></script>
+    <link rel="stylesheet" href="./family-chart.css"> 
+    <link rel="stylesheet" href="style.css"> <!-- create file 'family-chart.css' in same directory, copy/paste css from examples/create-tree -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -24,24 +27,72 @@
     />
   </head>
   <body>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <header>
       <div class="container">
         <div class="logo">
-            <a href="index.html">
-                <img src="images/Fajemirokun Balagbe 1.png" alt="" />
-            </a>
-         
+          <a href="index.html">
+            <img src="images/Fajemirokun Balagbe 1.png" alt="" />
+          </a>
         </div>
         <div class="links">
-          <a href="index.html">About</a>
-          <a href="familytree.html">Family Tree</a>
+          <a href="about.html">About</a>
+          <div class="hvm" >
+            <a >Family Tree</a>
+            <div class="loadingover"></div>
+            <div class="myjobmenu">
+              <div>
+                <div class="navgrid">
+                    <a class="navgriditem" href="family.html"
+                      ><div class="navgridlogo">
+                        <span class="material-symbols-outlined all-roles"
+                          >recent_actors
+                          </span
+                        >
+                      </div>
+                      <div class="navgridtext">
+                        <div
+                          class="textgridtitle aos-init aos-animate"
+                          data-aos="fade-up-right"
+                        >
+                          Family List
+                        </div>
+                      </div></a
+                    ><a class="navgriditem" href="familytree.html">
+                        <div class="navgridlogo">
+                        <span class="material-symbols-outlined new-updates">account_tree</span>
+                      </div>
+                      <div class="navgridtext">
+                        <div class="textgridtitle">Family Tree</div>
+                      </div>
+                    </a>
+        
+                  </div>
+                  <div class="nnn">
+             <img src="https://images.unsplash.com/photo-1577896849786-738ed6c78bd3?q=80&w=1474&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+                </div>
+              </div>
+             
+            </div>
+          </div>
+
           <a href="gallery.html">Gallery</a>
-          <a href="">News</a>
-          <a href="">Events</a>
+          <a href="blog.html">News</a>
+          <a href="about.html">Events</a>
           <a href="contact.html">Contact</a>
         </div>
+        <div class="navtoggle" onclick="navtoggle()">=</div>
       </div>
     </header>
+    <div class="loading-over2" onclick="navtoggle()"></div>
+    <script>
+      function navtoggle() {
+        var links = document.querySelector(".links");
+        var loadingover = document.querySelector(".loading-over2");
+        links.classList.toggle("showabs");
+        loadingover.classList.toggle("loading-overshow");
+      }
+    </script>
     <br />
     <br />
     <br />
@@ -54,7 +105,183 @@
 </div>
 <br>
 <br>
-<div id="tree"></div>
+
+<style>
+  /* Styles for tabs */
+  .tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+  }
+
+  /* Style the buttons inside the tab */
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+  }
+  .f3 {
+    height: 700px;
+    max-height: calc(100vh - 80px);
+    width: 100%;
+    max-width: 100%;
+    margin: auto;
+    position: relative;
+  }
+  
+  .f3 .cursor-pointer {
+    cursor: pointer;
+  }
+  .f3 svg.main_svg {
+    width: 100%;
+    height: 100%;
+    background-color: #3b5560;
+    color: #3b5560;
+  }
+  .f3 svg.main_svg text {
+    fill: currentColor;
+  }
+  .f3 rect.card-female, .f3 .card-female .card-body-rect, .f3 .card-female .text-overflow-mask {
+    fill: lightpink;
+  }
+  .f3 rect.card-male, .f3 .card-male .card-body-rect, .f3 .card-male .text-overflow-mask {
+    fill: lightblue;
+  }
+  .f3 .card-genderless .card-body-rect, .f3 .card-genderless .text-overflow-mask {
+    fill: lightgray;
+  }
+  .f3 .card_add .card-body-rect {
+    fill: #3b5560;
+    stroke-width: 4px;
+    stroke: #fff;
+    cursor: pointer;
+  }
+  .f3 g.card_add text {
+    fill: #fff;
+  }
+  .f3 .card-main {
+    stroke: #000;
+  }
+  .f3 .card_family_tree rect {
+    transition: 0.3s;
+  }
+  .f3 .card_family_tree:hover rect {
+    transform: scale(1.1);
+  }
+  .f3 .card_add_relative {
+    cursor: pointer;
+    color: #fff;
+    transition: 0.3s;
+  }
+  .f3 .card_add_relative circle {
+    fill: rgba(0, 0, 0, 0);
+  }
+  .f3 .card_add_relative:hover {
+    color: black;
+  }
+  .f3 .card_edit.pencil_icon {
+    color: #fff;
+    transition: 0.3s;
+  }
+  .f3 .card_edit.pencil_icon:hover {
+    color: black;
+  }
+  .f3 .card_break_link, .f3 .link_upper, .f3 .link_lower, .f3 .link_particles {
+    transform-origin: 50% 50%;
+    transition: 1s;
+  }
+  .f3 .card_break_link {
+    color: #fff;
+  }
+  .f3 .card_break_link.closed .link_upper {
+    transform: translate(-140.5px, 655.6px);
+  }
+  .f3 .card_break_link.closed .link_upper g {
+    transform: rotate(-58deg);
+  }
+  .f3 .card_break_link.closed .link_particles {
+    transform: scale(0);
+  }
+  .f3 .input-field input {
+    height: 2.5rem !important;
+  }
+  .f3 .input-field > label:not(.label-icon).active {
+    -webkit-transform: translateY(-8px) scale(0.8);
+    transform: translateY(-8px) scale(0.8);
+  }
+  /* Change background color of active tab */
+  .tabs button.active {
+    background-color: #111827;
+    color: white;
+  }
+
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border-top: none;
+  }
+
+  .tabs{
+    width:80%;
+    margin: auto;
+    display: flex;
+    gap: 10px;
+  }
+  .tabs button{
+    width: 100%;
+    padding: 13px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+
+  }
+
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+  }
+
+  /* Change background color of active tab */
+  .tab button.active {
+    background-color: #ddd;
+  }
+
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+
+    width: 100%;
+  }
+</style>
+
+<div class="tabs">
+  <button class="tablinks active" onclick="openTab(event, 'tab1')">Option One</button>
+  <button class="tablinks" onclick="openTab(event, 'tab2')">Option Two</button>
+</div>
+<br>
+<br>
+<div id="tab1" class="tabcontent" style="display:block;">
+  <div id="FamilyChart" class="f3"></div>
+
+</div>
+
+<div id="tab2" class="tabcontent">
+  <div id="tree"></div>
+<div>
+
+</div>
+</div>
+
    
     </div>
 
@@ -65,5 +292,1290 @@
     <script src="https://balkan.app/js/FamilyTree.js"></script>
     <script src="familytree.js"></script>
     <script src="script.js"></script>
+
+    <script type="module">
+    
+      const store = f3.createStore({
+          data: data(),
+          node_separation: 250,
+          level_separation: 150
+        }),
+        view = f3.d3AnimationView({
+          store,
+          cont: document.querySelector("#FamilyChart")
+        }),
+        Card = f3.elements.Card({
+          store,
+          svg: view.svg,
+          card_dim: {w:220,h:70,text_x:75,text_y:15,img_w:60,img_h:60,img_x:5,img_y:5},
+          card_display: [d => `${d.data['first name'] || ''} ${d.data['last name'] || ''}`,d => `${d.data['birthday'] || ''}`],
+          mini_tree: true,
+          link_break: false
+        })
+    
+      view.setCard(Card)
+      store.setOnUpdate(props => view.update(props || {}))
+      store.update.tree({initial: true})
+      
+      function data() {
+        return [
+    {
+      "id": "0",
+      "rels": {
+        "spouses": [],
+        "children": [
+          "5885ef80-10bd-4bf3-8f7c-475d4293a625",
+          "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+          "fdc342e7-c007-4faf-af94-2c4117525b6b",
+          "dd2f8041-3191-4171-bf6b-f3f1d44b1691"
+        ]
+      },
+      "data": {
+        "first name": "OLALERIN",
+        "last name": "",
+  
+        "avatar": "https://static8.depositphotos.com/1009634/988/v/950/depositphotos_9883921-stock-illustration-no-user-profile-picture.jpg",
+        "gender": "M"
+      }
+    },
+    {
+      "id": "5885ef80-10bd-4bf3-8f7c-475d4293a625",
+      "data": {
+        "gender": "M",
+        "first name": "OSUNTOLA",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "0"
+      }
+    },
+    {
+      "id": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+      "data": {
+        "gender": "M",
+        "first name": "FAJEMIROKUN",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "0",
+        "spouses": [
+          "c7680d18-6ac5-4bab-95af-3620f0939c29",
+          "a98ae2ae-9a18-4be7-8f85-8fb4f8df0888",
+          "5797482f-295a-4cdf-be67-d85b9fce955e",
+          "561ebbf9-09a8-4da1-ad81-2722f9d5dfa5",
+          "e296025b-a484-4e93-b5d4-2bd50a7f559d",
+          "cd9cb48c-4485-42e7-a1d3-b25fcd7dab5b",
+          "60dd9d28-b890-4b23-8ad1-2e9e3668dd7e",
+          "27b920aa-7f15-4ab1-9ce1-b0aadc5da458",
+          "e5cc918e-54b3-4158-9da9-7c25d839db6f",
+          "d40fb7e2-5d61-4827-bb5a-9065795578e8",
+          "13f526aa-7722-4483-9091-79fa3330498c",
+          "f09431a9-6f5f-4397-a7ab-8516160ebc6e",
+          "210261a5-9ba5-4fed-96cb-0efea32fc748",
+          "21ae3d26-bdfe-4fca-8d76-6d4388e58149",
+          "7ab48878-2dab-4f67-8ec0-96d2097be2ba",
+          "1ce7ffd4-a18b-4a81-8a37-43c50b66aa24",
+          "66cf1db9-5df8-4ed8-944f-e29486363bdd",
+          "a2d3990e-8b63-41a4-b060-175875c9c4d2",
+          "b84071ba-583e-4f68-8b88-0eece117f409",
+          "464aba27-84e5-4f21-83d5-8af36c321fbb",
+          "2d33ac6c-5ae8-426f-a508-d8e78859b91d",
+          "95082407-feb2-4a7a-8521-7d58b47bf4a5",
+          "2426020c-df36-488e-af27-beba7b13cefc",
+          "f4b1d8a6-31ba-49f7-ba91-99410a2430c1",
+          "319c91f6-e9f4-4a74-a538-73e1f506aa15",
+          "73e59f64-e67d-4abd-a6c2-931cbae7f373"
+        ],
+        "children": [
+          "b20f2c9b-edbe-4c25-a8ba-f3fd083e609a",
+          "40607d56-59bf-4a16-8a91-c58e1841cbc4",
+          "03889fee-88c0-4c55-a520-c7681b3508d5",
+          "db44da62-ea50-4724-baf4-199017eca087",
+          "fc6241c6-32e2-46a1-80b6-4d6ca5ac9874",
+          "b342f8a9-cf8e-4061-9605-7909f331ae41",
+          "e5dae984-c1a1-4eda-bbf7-de8fe8bbb0ce",
+          "a2aba6c1-811a-41ce-a3a8-84fe1e61de3d",
+          "e295fe56-435a-4ff8-99b4-e1ee38a2d7a9",
+          "16f2a2b7-5595-4b27-8adc-a3509612c45f",
+          "8d57916c-a08d-4807-8ff1-db8734d45ec5",
+          "e5640143-36a2-45f0-8140-a8925610c94b",
+          "fc109d65-fb44-4a55-9df0-092ef70c8975",
+          "d9591c3d-83f5-4aa0-8898-6dc7741673f4",
+          "e884baeb-d5fc-481a-9a56-a7a638ce42ae",
+          "05afac0a-8f96-4667-9f85-6fb02361e7a1",
+          "681f0f25-d6a4-4dd0-99ce-8785ab5d2b28",
+          "1aee1881-6618-47b3-badb-a48a961df885",
+          "0c28e146-e6dd-4ef2-83f6-bc11cf944e63",
+          "da9bc54d-fce2-468f-aaf1-0a8ae31e6167",
+          "52eed973-2735-484f-8560-d3b86b2331e0",
+          "308bc357-51cc-40d2-8cae-7b9ea2990d8c",
+          "ab773cc2-c6b7-47b5-b855-df817c6de637",
+          "7bda12ef-9294-4cb6-93b5-1d9ecb4ea6a6",
+          "913509df-b3ab-4c3d-bcf8-117d658d967e",
+          "79398d68-093d-4fe1-b9fb-edd4bb839c4d",
+          "730dd5a3-4844-4933-a8a8-489d0a7e276f",
+          "a69b2a6b-29a3-4298-a5c8-b8e254115099",
+          "91a6e4df-d26b-4405-83d8-b3c32c4ff390",
+          "def155df-fbe2-4f70-ba7e-028fc48212b7",
+          "708b5f5e-893b-44d5-88bf-406686206371",
+          "d798499e-e27b-4a9a-9cce-f1513b70ca30",
+          "1226b576-8bc1-47ae-86d3-1016abc7717c",
+          "b69f5a77-501a-42a5-9848-f51629e609ed",
+          "4988ddf5-63d6-45b5-841a-3c7df1bd3dda",
+          "6c28f7ff-9257-41ae-9832-9e8720426e82",
+          "40c2d42b-35eb-4726-b188-7aa4e4911e04",
+          "c7d54b5c-8fa8-4526-9329-7195eae6ef8a",
+          "f67a64af-92a5-47a6-83df-0a09603c6f22",
+          "74d90d5a-5dee-40cf-ab89-6de64a4dac3c",
+          "386cfc15-4f39-41fc-8f75-4c88d8176454",
+          "f44ebd46-203d-4957-9038-101fad7ba879",
+          "719bdf12-aed8-4630-b37d-22e3d14e14b7",
+          "f38e161e-dcc1-4a34-ab89-034e45ad4429"
+        ]
+      }
+    },
+    {
+      "id": "fdc342e7-c007-4faf-af94-2c4117525b6b",
+      "data": {
+        "gender": "F",
+        "first name": "FAJEMISONU",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "0"
+      }
+    },
+    {
+      "id": "c7680d18-6ac5-4bab-95af-3620f0939c29",
+      "data": {
+        "gender": "F",
+        "first name": "NIKITA",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "spouses": [
+          "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb"
+        ],
+        "children": [
+          "b20f2c9b-edbe-4c25-a8ba-f3fd083e609a",
+          "40607d56-59bf-4a16-8a91-c58e1841cbc4",
+          "03889fee-88c0-4c55-a520-c7681b3508d5"
+        ]
+      }
+    },
+    {
+      "id": "a98ae2ae-9a18-4be7-8f85-8fb4f8df0888",
+      "data": {
+        "gender": "F",
+        "first name": "JALA 1",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "spouses": [
+          "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb"
+        ],
+        "children": [
+          "db44da62-ea50-4724-baf4-199017eca087",
+          "fc6241c6-32e2-46a1-80b6-4d6ca5ac9874"
+        ]
+      }
+    },
+    {
+      "id": "5797482f-295a-4cdf-be67-d85b9fce955e",
+      "data": {
+        "gender": "F",
+        "first name": "JALA 2",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "spouses": [
+          "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb"
+        ],
+        "children": [
+          "b342f8a9-cf8e-4061-9605-7909f331ae41"
+        ]
+      }
+    },
+    {
+      "id": "561ebbf9-09a8-4da1-ad81-2722f9d5dfa5",
+      "data": {
+        "gender": "F",
+        "first name": "FATUYOLE",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "spouses": [
+          "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb"
+        ],
+        "children": [
+          "e5dae984-c1a1-4eda-bbf7-de8fe8bbb0ce",
+          "a2aba6c1-811a-41ce-a3a8-84fe1e61de3d",
+          "e295fe56-435a-4ff8-99b4-e1ee38a2d7a9",
+          "16f2a2b7-5595-4b27-8adc-a3509612c45f"
+        ]
+      }
+    },
+    {
+      "id": "e296025b-a484-4e93-b5d4-2bd50a7f559d",
+      "data": {
+        "gender": "F",
+        "first name": "SADIYA",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "spouses": [
+          "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb"
+        ],
+        "children": [
+          "8d57916c-a08d-4807-8ff1-db8734d45ec5",
+          "e5640143-36a2-45f0-8140-a8925610c94b",
+          "fc109d65-fb44-4a55-9df0-092ef70c8975"
+        ]
+      }
+    },
+    {
+      "id": "cd9cb48c-4485-42e7-a1d3-b25fcd7dab5b",
+      "data": {
+        "gender": "F",
+        "first name": "ESUBAMBI",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "spouses": [
+          "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb"
+        ],
+        "children": [
+          "d9591c3d-83f5-4aa0-8898-6dc7741673f4",
+          "e884baeb-d5fc-481a-9a56-a7a638ce42ae"
+        ]
+      }
+    },
+    {
+      "id": "60dd9d28-b890-4b23-8ad1-2e9e3668dd7e",
+      "data": {
+        "gender": "F",
+        "first name": "BOSEDE",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "spouses": [
+          "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb"
+        ],
+        "children": [
+          "05afac0a-8f96-4667-9f85-6fb02361e7a1",
+          "681f0f25-d6a4-4dd0-99ce-8785ab5d2b28"
+        ]
+      }
+    },
+    {
+      "id": "27b920aa-7f15-4ab1-9ce1-b0aadc5da458",
+      "data": {
+        "gender": "F",
+        "first name": "JALA 3",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "spouses": [
+          "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb"
+        ],
+        "children": [
+          "1aee1881-6618-47b3-badb-a48a961df885",
+          "0c28e146-e6dd-4ef2-83f6-bc11cf944e63"
+        ]
+      }
+    },
+    {
+      "id": "e5cc918e-54b3-4158-9da9-7c25d839db6f",
+      "data": {
+        "gender": "F",
+        "first name": "OSUNSANYA",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "spouses": [
+          "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb"
+        ],
+        "children": [
+          "da9bc54d-fce2-468f-aaf1-0a8ae31e6167",
+          "52eed973-2735-484f-8560-d3b86b2331e0",
+          "308bc357-51cc-40d2-8cae-7b9ea2990d8c"
+        ]
+      }
+    },
+    {
+      "id": "d40fb7e2-5d61-4827-bb5a-9065795578e8",
+      "data": {
+        "gender": "F",
+        "first name": "AWOSEYIN",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "spouses": [
+          "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb"
+        ]
+      }
+    },
+    {
+      "id": "13f526aa-7722-4483-9091-79fa3330498c",
+      "data": {
+        "gender": "F",
+        "first name": "ADEYENWO",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "spouses": [
+          "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb"
+        ],
+        "children": [
+          "ab773cc2-c6b7-47b5-b855-df817c6de637",
+          "7bda12ef-9294-4cb6-93b5-1d9ecb4ea6a6"
+        ]
+      }
+    },
+    {
+      "id": "f09431a9-6f5f-4397-a7ab-8516160ebc6e",
+      "data": {
+        "gender": "F",
+        "first name": "FAWEKOMI",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "spouses": [
+          "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb"
+        ],
+        "children": [
+          "913509df-b3ab-4c3d-bcf8-117d658d967e",
+          "79398d68-093d-4fe1-b9fb-edd4bb839c4d",
+          "730dd5a3-4844-4933-a8a8-489d0a7e276f",
+          "a69b2a6b-29a3-4298-a5c8-b8e254115099",
+          "91a6e4df-d26b-4405-83d8-b3c32c4ff390"
+        ]
+      }
+    },
+    {
+      "id": "210261a5-9ba5-4fed-96cb-0efea32fc748",
+      "data": {
+        "gender": "F",
+        "first name": "DEMOLA",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "spouses": [
+          "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb"
+        ],
+        "children": [
+          "def155df-fbe2-4f70-ba7e-028fc48212b7",
+          "708b5f5e-893b-44d5-88bf-406686206371",
+          "d798499e-e27b-4a9a-9cce-f1513b70ca30"
+        ]
+      }
+    },
+    {
+      "id": "21ae3d26-bdfe-4fca-8d76-6d4388e58149",
+      "data": {
+        "gender": "F",
+        "first name": "OSUNWE",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "spouses": [
+          "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb"
+        ],
+        "children": [
+          "1226b576-8bc1-47ae-86d3-1016abc7717c",
+          "b69f5a77-501a-42a5-9848-f51629e609ed"
+        ]
+      }
+    },
+    {
+      "id": "7ab48878-2dab-4f67-8ec0-96d2097be2ba",
+      "data": {
+        "gender": "F",
+        "first name": "OGUNDIPE",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "spouses": [
+          "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb"
+        ],
+        "children": [
+          "4988ddf5-63d6-45b5-841a-3c7df1bd3dda",
+          "6c28f7ff-9257-41ae-9832-9e8720426e82"
+        ]
+      }
+    },
+    {
+      "id": "1ce7ffd4-a18b-4a81-8a37-43c50b66aa24",
+      "data": {
+        "gender": "F",
+        "first name": "MALAO",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "spouses": [
+          "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb"
+        ],
+        "children": [
+          "40c2d42b-35eb-4726-b188-7aa4e4911e04"
+        ]
+      }
+    },
+    {
+      "id": "66cf1db9-5df8-4ed8-944f-e29486363bdd",
+      "data": {
+        "gender": "F",
+        "first name": "ABAYOMI",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "spouses": [
+          "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb"
+        ],
+        "children": [
+          "c7d54b5c-8fa8-4526-9329-7195eae6ef8a",
+          "f67a64af-92a5-47a6-83df-0a09603c6f22"
+        ]
+      }
+    },
+    {
+      "id": "a2d3990e-8b63-41a4-b060-175875c9c4d2",
+      "data": {
+        "gender": "F",
+        "first name": "OGUNSOLA",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "spouses": [
+          "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb"
+        ]
+      }
+    },
+    {
+      "id": "b84071ba-583e-4f68-8b88-0eece117f409",
+      "data": {
+        "gender": "F",
+        "first name": "ADESU",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "spouses": [
+          "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb"
+        ]
+      }
+    },
+    {
+      "id": "464aba27-84e5-4f21-83d5-8af36c321fbb",
+      "data": {
+        "gender": "F",
+        "first name": "ARODO",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "spouses": [
+          "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb"
+        ],
+        "children": [
+          "74d90d5a-5dee-40cf-ab89-6de64a4dac3c"
+        ]
+      }
+    },
+    {
+      "id": "2d33ac6c-5ae8-426f-a508-d8e78859b91d",
+      "data": {
+        "gender": "F",
+        "first name": "OMOTOALA",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "spouses": [
+          "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb"
+        ],
+        "children": [
+          "386cfc15-4f39-41fc-8f75-4c88d8176454"
+        ]
+      }
+    },
+    {
+      "id": "95082407-feb2-4a7a-8521-7d58b47bf4a5",
+      "data": {
+        "gender": "F",
+        "first name": "OLAMIGOKE",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "spouses": [
+          "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb"
+        ]
+      }
+    },
+    {
+      "id": "2426020c-df36-488e-af27-beba7b13cefc",
+      "data": {
+        "gender": "F",
+        "first name": "FANURE",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "spouses": [
+          "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb"
+        ]
+      }
+    },
+    {
+      "id": "f4b1d8a6-31ba-49f7-ba91-99410a2430c1",
+      "data": {
+        "gender": "F",
+        "first name": "MOLORE",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "spouses": [
+          "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb"
+        ],
+        "children": [
+          "f44ebd46-203d-4957-9038-101fad7ba879",
+          "719bdf12-aed8-4630-b37d-22e3d14e14b7",
+          "f38e161e-dcc1-4a34-ab89-034e45ad4429"
+        ]
+      }
+    },
+    {
+      "id": "319c91f6-e9f4-4a74-a538-73e1f506aa15",
+      "data": {
+        "gender": "F",
+        "first name": "FAWUSA",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "spouses": [
+          "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb"
+        ]
+      }
+    },
+    {
+      "id": "73e59f64-e67d-4abd-a6c2-931cbae7f373",
+      "data": {
+        "gender": "F",
+        "first name": "OLAMITOKE",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "spouses": [
+          "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb"
+        ]
+      }
+    },
+    {
+      "id": "b20f2c9b-edbe-4c25-a8ba-f3fd083e609a",
+      "data": {
+        "gender": "M",
+        "first name": "AKINSANYA",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "c7680d18-6ac5-4bab-95af-3620f0939c29"
+      }
+    },
+    {
+      "id": "40607d56-59bf-4a16-8a91-c58e1841cbc4",
+      "data": {
+        "gender": "F",
+        "first name": "SAKEI",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "c7680d18-6ac5-4bab-95af-3620f0939c29"
+      }
+    },
+    {
+      "id": "db44da62-ea50-4724-baf4-199017eca087",
+      "data": {
+        "gender": "F",
+        "first name": "IJIFOLAWE",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "a98ae2ae-9a18-4be7-8f85-8fb4f8df0888"
+      }
+    },
+    {
+      "id": "fc6241c6-32e2-46a1-80b6-4d6ca5ac9874",
+      "data": {
+        "gender": "F",
+        "first name": "AJAYI",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "a98ae2ae-9a18-4be7-8f85-8fb4f8df0888"
+      }
+    },
+    {
+      "id": "b342f8a9-cf8e-4061-9605-7909f331ae41",
+      "data": {
+        "gender": "F",
+        "first name": "MEWOLA",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "5797482f-295a-4cdf-be67-d85b9fce955e"
+      }
+    },
+    {
+      "id": "e5dae984-c1a1-4eda-bbf7-de8fe8bbb0ce",
+      "data": {
+        "gender": "F",
+        "first name": "ELUFOYO",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "561ebbf9-09a8-4da1-ad81-2722f9d5dfa5"
+      }
+    },
+    {
+      "id": "a2aba6c1-811a-41ce-a3a8-84fe1e61de3d",
+      "data": {
+        "gender": "M",
+        "first name": "GBAGBE",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "561ebbf9-09a8-4da1-ad81-2722f9d5dfa5"
+      }
+    },
+    {
+      "id": "e295fe56-435a-4ff8-99b4-e1ee38a2d7a9",
+      "data": {
+        "gender": "F",
+        "first name": "PONDUN",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "561ebbf9-09a8-4da1-ad81-2722f9d5dfa5",
+        "spouses": [],
+        "children": []
+      }
+    },
+    {
+      "id": "16f2a2b7-5595-4b27-8adc-a3509612c45f",
+      "data": {
+        "gender": "M",
+        "first name": "ODUDEYI",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "561ebbf9-09a8-4da1-ad81-2722f9d5dfa5"
+      }
+    },
+    {
+      "id": "03889fee-88c0-4c55-a520-c7681b3508d5",
+      "data": {
+        "gender": "M",
+        "first name": "OSUNDALU",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "mother": "c7680d18-6ac5-4bab-95af-3620f0939c29",
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb"
+      }
+    },
+    {
+      "id": "8d57916c-a08d-4807-8ff1-db8734d45ec5",
+      "data": {
+        "gender": "M",
+        "first name": "SAYONU",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "e296025b-a484-4e93-b5d4-2bd50a7f559d"
+      }
+    },
+    {
+      "id": "e5640143-36a2-45f0-8140-a8925610c94b",
+      "data": {
+        "gender": "F",
+        "first name": "L.FATIKIMI",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "e296025b-a484-4e93-b5d4-2bd50a7f559d"
+      }
+    },
+    {
+      "id": "fc109d65-fb44-4a55-9df0-092ef70c8975",
+      "data": {
+        "gender": "M",
+        "first name": "IFAROOMO",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "e296025b-a484-4e93-b5d4-2bd50a7f559d"
+      }
+    },
+    {
+      "id": "d9591c3d-83f5-4aa0-8898-6dc7741673f4",
+      "data": {
+        "gender": "M",
+        "first name": "AKINTUNDE",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "cd9cb48c-4485-42e7-a1d3-b25fcd7dab5b"
+      }
+    },
+    {
+      "id": "e884baeb-d5fc-481a-9a56-a7a638ce42ae",
+      "data": {
+        "gender": "M",
+        "first name": "AKINSANYA",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "cd9cb48c-4485-42e7-a1d3-b25fcd7dab5b"
+      }
+    },
+    {
+      "id": "05afac0a-8f96-4667-9f85-6fb02361e7a1",
+      "data": {
+        "gender": "F",
+        "first name": "WANDE",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "60dd9d28-b890-4b23-8ad1-2e9e3668dd7e"
+      }
+    },
+    {
+      "id": "681f0f25-d6a4-4dd0-99ce-8785ab5d2b28",
+      "data": {
+        "gender": "M",
+        "first name": "IGE",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "60dd9d28-b890-4b23-8ad1-2e9e3668dd7e"
+      }
+    },
+    {
+      "id": "1aee1881-6618-47b3-badb-a48a961df885",
+      "data": {
+        "gender": "F",
+        "first name": "OSUNDOREPO",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "27b920aa-7f15-4ab1-9ce1-b0aadc5da458"
+      }
+    },
+    {
+      "id": "0c28e146-e6dd-4ef2-83f6-bc11cf944e63",
+      "data": {
+        "gender": "M",
+        "first name": "ONIKI",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "27b920aa-7f15-4ab1-9ce1-b0aadc5da458"
+      }
+    },
+    {
+      "id": "da9bc54d-fce2-468f-aaf1-0a8ae31e6167",
+      "data": {
+        "gender": "M",
+        "first name": "FOLAJIMI",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "e5cc918e-54b3-4158-9da9-7c25d839db6f"
+      }
+    },
+    {
+      "id": "52eed973-2735-484f-8560-d3b86b2331e0",
+      "data": {
+        "gender": "M",
+        "first name": "AKINGBOLA",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "e5cc918e-54b3-4158-9da9-7c25d839db6f"
+      }
+    },
+    {
+      "id": "308bc357-51cc-40d2-8cae-7b9ea2990d8c",
+      "data": {
+        "gender": "F",
+        "first name": "YELOLA",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "e5cc918e-54b3-4158-9da9-7c25d839db6f"
+      }
+    },
+    {
+      "id": "ab773cc2-c6b7-47b5-b855-df817c6de637",
+      "data": {
+        "gender": "M",
+        "first name": "ADERONKE",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "13f526aa-7722-4483-9091-79fa3330498c"
+      }
+    },
+    {
+      "id": "7bda12ef-9294-4cb6-93b5-1d9ecb4ea6a6",
+      "data": {
+        "gender": "M",
+        "first name": "TIDOYE",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "13f526aa-7722-4483-9091-79fa3330498c"
+      }
+    },
+    {
+      "id": "913509df-b3ab-4c3d-bcf8-117d658d967e",
+      "data": {
+        "gender": "F",
+        "first name": "FUNMILADE",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "f09431a9-6f5f-4397-a7ab-8516160ebc6e"
+      }
+    },
+    {
+      "id": "79398d68-093d-4fe1-b9fb-edd4bb839c4d",
+      "data": {
+        "gender": "F",
+        "first name": "SALU",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "f09431a9-6f5f-4397-a7ab-8516160ebc6e"
+      }
+    },
+    {
+      "id": "730dd5a3-4844-4933-a8a8-489d0a7e276f",
+      "data": {
+        "gender": "F",
+        "first name": "FAYEMI",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "f09431a9-6f5f-4397-a7ab-8516160ebc6e"
+      }
+    },
+    {
+      "id": "a69b2a6b-29a3-4298-a5c8-b8e254115099",
+      "data": {
+        "gender": "M",
+        "first name": "E.IJIGBOLA",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "f09431a9-6f5f-4397-a7ab-8516160ebc6e"
+      }
+    },
+    {
+      "id": "91a6e4df-d26b-4405-83d8-b3c32c4ff390",
+      "data": {
+        "gender": "M",
+        "first name": "S.LAGUNDOYE",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "f09431a9-6f5f-4397-a7ab-8516160ebc6e"
+      }
+    },
+    {
+      "id": "def155df-fbe2-4f70-ba7e-028fc48212b7",
+      "data": {
+        "gender": "M",
+        "first name": "FAMAKINWA",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "210261a5-9ba5-4fed-96cb-0efea32fc748"
+      }
+    },
+    {
+      "id": "708b5f5e-893b-44d5-88bf-406686206371",
+      "data": {
+        "gender": "M",
+        "first name": "OLOSUNDE",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "210261a5-9ba5-4fed-96cb-0efea32fc748"
+      }
+    },
+    {
+      "id": "d798499e-e27b-4a9a-9cce-f1513b70ca30",
+      "data": {
+        "gender": "F",
+        "first name": "ADEOTI",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "210261a5-9ba5-4fed-96cb-0efea32fc748"
+      }
+    },
+    {
+      "id": "1226b576-8bc1-47ae-86d3-1016abc7717c",
+      "data": {
+        "gender": "M",
+        "first name": "GBEYIDE",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "21ae3d26-bdfe-4fca-8d76-6d4388e58149"
+      }
+    },
+    {
+      "id": "b69f5a77-501a-42a5-9848-f51629e609ed",
+      "data": {
+        "gender": "F",
+        "first name": "FORE",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "21ae3d26-bdfe-4fca-8d76-6d4388e58149"
+      }
+    },
+    {
+      "id": "4988ddf5-63d6-45b5-841a-3c7df1bd3dda",
+      "data": {
+        "gender": "M",
+        "first name": "FASULE",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "7ab48878-2dab-4f67-8ec0-96d2097be2ba"
+      }
+    },
+    {
+      "id": "6c28f7ff-9257-41ae-9832-9e8720426e82",
+      "data": {
+        "gender": "F",
+        "first name": "ODEWUMI",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "7ab48878-2dab-4f67-8ec0-96d2097be2ba"
+      }
+    },
+    {
+      "id": "40c2d42b-35eb-4726-b188-7aa4e4911e04",
+      "data": {
+        "gender": "F",
+        "first name": "BIMPE",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "1ce7ffd4-a18b-4a81-8a37-43c50b66aa24"
+      }
+    },
+    {
+      "id": "c7d54b5c-8fa8-4526-9329-7195eae6ef8a",
+      "data": {
+        "gender": "F",
+        "first name": "IJIWARE",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "66cf1db9-5df8-4ed8-944f-e29486363bdd"
+      }
+    },
+    {
+      "id": "f67a64af-92a5-47a6-83df-0a09603c6f22",
+      "data": {
+        "gender": "M",
+        "first name": "JOHN TOGUN",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "66cf1db9-5df8-4ed8-944f-e29486363bdd"
+      }
+    },
+    {
+      "id": "74d90d5a-5dee-40cf-ab89-6de64a4dac3c",
+      "data": {
+        "gender": "M",
+        "first name": "AKINTOKUN",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "464aba27-84e5-4f21-83d5-8af36c321fbb"
+      }
+    },
+    {
+      "id": "386cfc15-4f39-41fc-8f75-4c88d8176454",
+      "data": {
+        "gender": "M",
+        "first name": "OSUNGBOHUN",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "2d33ac6c-5ae8-426f-a508-d8e78859b91d"
+      }
+    },
+    {
+      "id": "f44ebd46-203d-4957-9038-101fad7ba879",
+      "data": {
+        "gender": "M",
+        "first name": "J.OSUNROGBA",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "f4b1d8a6-31ba-49f7-ba91-99410a2430c1"
+      }
+    },
+    {
+      "id": "719bdf12-aed8-4630-b37d-22e3d14e14b7",
+      "data": {
+        "gender": "M",
+        "first name": "ILELOMIA",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "f4b1d8a6-31ba-49f7-ba91-99410a2430c1"
+      }
+    },
+    {
+      "id": "f38e161e-dcc1-4a34-ab89-034e45ad4429",
+      "data": {
+        "gender": "M",
+        "first name": "TAIYEWO",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "3203fbc3-b0f5-44e8-b2ed-dcac919fb8fb",
+        "mother": "f4b1d8a6-31ba-49f7-ba91-99410a2430c1"
+      }
+    },
+    {
+      "id": "dd2f8041-3191-4171-bf6b-f3f1d44b1691",
+      "data": {
+        "gender": "M",
+        "first name": "HYXX",
+        "last name": "",
+        "birthday": "",
+        "avatar": ""
+      },
+      "rels": {
+        "father": "0"
+      }
+    }
+  ]
+      }
+    
+    </script>
+
+    <script>
+      function openTab(evt, tabName) {
+        // Get all elements with class="tabcontent" and hide them
+        var tabcontent = document.getElementsByClassName("tabcontent");
+        for (var i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+        // Get all elements with class="tablinks" and remove the class "active"
+        var tablinks = document.getElementsByClassName("tablinks");
+        for (var i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+      }
+      </script>
+
   </body>
 </html>

@@ -18,18 +18,32 @@
 <body>
   <header>
     <div class="container">
-      <div class="logo"><img src="images/Fajemirokun Balagbe 1.png" alt="" /></div>
+      <div class="logo">
+          <a href="index.html">
+              <img src="images/Fajemirokun Balagbe 1.png" alt="" />
+          </a>
+       
+      </div>
       <div class="links">
-      <a href="index.html">About</a>
-      <a href="about.html">Family Tree</a>
+        <a href="about.html">About</a>
+        <a href="familytree.html">Family Tree</a>
         <a href="gallery.html">Gallery</a>
-        <a href="">News</a>
-        <a href="">Events</a>
+        <a href="blog.html">News</a>
+        <a href="about.html">Events</a>
         <a href="contact.html">Contact</a>
       </div>
-
+      <div class="navtoggle" onclick="navtoggle()">=</div>
     </div>
   </header>
+  <div class="loading-over2" onclick="navtoggle()"></div>
+  <script>
+    function navtoggle() {
+      var links = document.querySelector(".links");
+      var loadingover = document.querySelector(".loading-over2");
+      links.classList.toggle("showabs");
+      loadingover.classList.toggle("loading-overshow");
+    }
+  </script>
       <br>
       <br>
  <br>

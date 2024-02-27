@@ -18,24 +18,72 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   </head>
   <body>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <header>
       <div class="container">
         <div class="logo">
-            <a href="index.html">
-                <img src="images/Fajemirokun Balagbe 1.png" alt="" />
-            </a>
-         
+          <a href="index.html">
+            <img src="images/Fajemirokun Balagbe 1.png" alt="" />
+          </a>
         </div>
         <div class="links">
-          <a href="index.html">About</a>
-          <a href="familytree.html">Family Tree</a>
+          <a href="about.html">About</a>
+          <div class="hvm" >
+            <a >Family Tree</a>
+            <div class="loadingover"></div>
+            <div class="myjobmenu">
+              <div>
+                <div class="navgrid">
+                    <a class="navgriditem" href="family.html"
+                      ><div class="navgridlogo">
+                        <span class="material-symbols-outlined all-roles"
+                          >recent_actors
+                          </span
+                        >
+                      </div>
+                      <div class="navgridtext">
+                        <div
+                          class="textgridtitle aos-init aos-animate"
+                          data-aos="fade-up-right"
+                        >
+                          Family List
+                        </div>
+                      </div></a
+                    ><a class="navgriditem" href="familytree.html">
+                        <div class="navgridlogo">
+                        <span class="material-symbols-outlined new-updates">account_tree</span>
+                      </div>
+                      <div class="navgridtext">
+                        <div class="textgridtitle">Family Tree</div>
+                      </div>
+                    </a>
+        
+                  </div>
+                  <div class="nnn">
+             <img src="https://images.unsplash.com/photo-1577896849786-738ed6c78bd3?q=80&w=1474&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+                </div>
+              </div>
+             
+            </div>
+          </div>
+
           <a href="gallery.html">Gallery</a>
           <a href="blog.html">News</a>
-          <a href="">Events</a>
+          <a href="about.html">Events</a>
           <a href="contact.html">Contact</a>
         </div>
+        <div class="navtoggle" onclick="navtoggle()">=</div>
       </div>
     </header>
+    <div class="loading-over2" onclick="navtoggle()"></div>
+    <script>
+      function navtoggle() {
+        var links = document.querySelector(".links");
+        var loadingover = document.querySelector(".loading-over2");
+        links.classList.toggle("showabs");
+        loadingover.classList.toggle("loading-overshow");
+      }
+    </script>
     <br />
     <br />
     <div class="herosection">
@@ -66,7 +114,7 @@
               journey to showcase the rich tapestry of our family's history,
               values, and achievements.
             </div>
-            <div class="herobutton">
+            <a href="familytree.html" class="herobutton">
               View Family Tree
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -84,7 +132,7 @@
                   fill="black"
                 />
               </svg>
-            </div>
+            </a>
           </div>
         </div>
       </div>
@@ -228,7 +276,7 @@
                 High-end digital experiences. Created the heart Manhattan, we
                 are a should human team driving force.
               </div>
-              <div class="valuebtn">
+              <div class="valuebtn" onclick="window.location.href = 'about.html'">
                 <svg
                   class="nhvr"
                   xmlns="http://www.w3.org/2000/svg"
@@ -280,7 +328,7 @@
                 High-end digital experiences. Created the heart Manhattan, we
                 are a should human team driving force.
               </div>
-              <div class="valuebtn">
+              <div class="valuebtn" onclick="window.location.href = 'about.html'">
                 <svg
                   class="nhvr"
                   xmlns="http://www.w3.org/2000/svg"
@@ -334,7 +382,7 @@
                 High-end digital experiences. Created the heart Manhattan, we
                 are a should human team driving force.
               </div>
-              <div class="valuebtn">
+              <div class="valuebtn" onclick="window.location.href = 'about.html'">
                 <svg
                   class="nhvr"
                   xmlns="http://www.w3.org/2000/svg"
@@ -445,7 +493,7 @@
    -->
           </div>
 
-          <div class="vgallery">
+          <div class="vgallery" onclick="window.location.href = 'gallery.html'">
             <img src="images/Btn.png" alt="" />
           </div>
         </div>
