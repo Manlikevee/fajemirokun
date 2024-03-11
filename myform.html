@@ -436,7 +436,7 @@ Let's dive deeper and get to know you better.
   
         </div>
       </div>
-      <div id="addButton">Add</div>
+      <div id="addButton">Add New Family Connection +</div>
 
       
 
@@ -445,10 +445,11 @@ Let's dive deeper and get to know you better.
       
 
       
-      <input type="submit" value="Submit">
+      <input type="submit" value="Submit Form">
   </form>
 
   <div id="formData"></div>
+  <div id="response"></div>
   </div>
 </div>
    
@@ -493,7 +494,49 @@ document.getElementById("familyForm").addEventListener("submit", function(event)
   // Displaying the data
   var formDataDiv = document.getElementById('formData');
   formDataDiv.textContent = JSON.stringify(formData, null, 2);
+
+  const mname = document.getElementById('name').value
+  const fdata = JSON.stringify(formData, null, 2);
+
+
+  sendData(mname, fdata)
 });
+
+
+
+function sendData(mname, fdata) {
+  // Sample data
+  const name = mname;
+  const formData = fdata;
+
+  console.log(name)
+  console.log(fdata)
+
+  // Construct the data to be sent
+  const data = new URLSearchParams();
+  data.append('name', name);
+  data.append('formdata', formData);
+
+
+  // Send a POST request to the PHP script
+  fetch('/api.php', {
+    method: 'POST',
+    body: data,
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+  })
+  .then(response => response.text())
+  .then(responseText => {
+    // Display the response from the server
+    document.getElementById('response').innerText = responseText;
+    window.location.href='success.html'
+  })
+  .catch(error => {
+    console.error('There was a problem with the fetch operation:', error);
+  });
+}
+
   </script>
   
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
